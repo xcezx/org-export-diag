@@ -1,19 +1,28 @@
-;;; org-export-diag -- blockdiag, seqdiag, actdiag, nwdiag export for Org-mode
+;;; org-export-diag.el --- blockdiag, seqdiag, actdiag, nwdiag export for Org-mode
+
+;; Author: xcezx <main.xcezx@gmail.com>
+;; Version: 0.1.0
+;; Keywords: org
 
 ;;; Code:
+
 (require 'org-exp)
 
+;;;###autoload
 (defgroup org-export-diag nil
   "Options for org-export-diag."
-  :tag "Org Export diag"
   :group 'org-export)
 
+;;;###autoload
 (defcustom org-export-diag-blockdiag-command "blockdiag"
   "Path to blockdiag command.")
+;;;###autoload
 (defcustom org-export-diag-seqdiag-command "seqdiag"
   "Path to seqdiag command.")
+;;;###autoload
 (defcustom org-export-diag-actdiag-command "actdiag"
   "Path to actdig command.")
+;;;###autoload
 (defcustom org-export-diag-nwdiag-command "nwdiag"
   "Path to nwdiag command.")
 
@@ -22,15 +31,20 @@
 (org-export-blocks-add-block '(actdiag org-export-blocks-format-actdiag nil))
 (org-export-blocks-add-block '(nwdiag org-export-blocks-format-nwdiag nil))
 
+;;;###autoload
 (defun org-export-blocks-format-blockdiag (body &rest headers)
   (apply 'org-export-blocks-format-diag org-export-diag-blockdiag-command body headers))
+;;;###autoload
 (defun org-export-blocks-format-seqdiag (body &rest headers)
   (apply 'org-export-blocks-format-diag org-export-diag-seqdiag-command body headers))
+;;;###autoload
 (defun org-export-blocks-format-actdiag (body &rest headers)
   (apply 'org-export-blocks-format-diag org-export-diag-actdiag-command body headers))
+;;;###autoload
 (defun org-export-blocks-format-nwdiag (body &rest headers)
   (apply 'org-export-blocks-format-diag org-export-diag-nwdiag-command body headers))
 
+;;;###autoload
 (defun org-export-blocks-format-diag (diag-command body &rest headers)
   "Pass block BODY to the blockdiag utility creating an image.
 Specify the path at wich the image should be saved as the first
@@ -79,3 +93,5 @@ passed to blockdiag utility as command line arguments."
              "#+END_EXAMPLE\n"))))))
 
 (provide 'org-export-diag)
+
+;;; org-export-diag.el ends here

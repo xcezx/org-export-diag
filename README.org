@@ -1,0 +1,55 @@
+* org-export-diag
+
+** sample
+
+   #+BEGIN_BLOCKDIAG blockdiag-sample
+   blockdiag {
+     A -> B -> C -> D;
+     A -> E -> F -> G;
+   }
+   #+END_BLOCKDIAG
+
+   #+BEGIN_SEQDIAG seqdiag-sample
+   seqdiag {
+     browser  -> webserver [label = "GET /index.html"];
+     browser <-- webserver;
+     browser  -> webserver [label = "POST /blog/comment"];
+                 webserver  -> database [label = "INSERT comment"];
+                 webserver <-- database;
+     browser <-- webserver;
+   }
+   #+END_SEQDIAG
+
+   #+BEGIN_ACTDIAG actdiag-sample
+   actdiag {
+     write -> convert -> image
+   
+     lane user {
+       label = "User"
+       write [label = "Writing reST"];
+       image [label = "Get diagram IMAGE"];
+     }
+     lane actdiag {
+     convert [label = "Convert reST to Image"];
+     }
+   }
+   #+END_ACTDIAG
+
+   #+BEGIN_NWDIAG nwdiag-sample
+   nwdiag {
+     network dmz {
+         address = "210.x.x.x/24"
+   
+         web01 [address = "210.x.x.1"];
+         web02 [address = "210.x.x.2"];
+     }
+     network internal {
+         address = "172.x.x.x/24";
+   
+         web01 [address = "172.x.x.1"];
+         web02 [address = "172.x.x.2"];
+         db01;
+         db02;
+     }
+   }
+   #+END_NWDIAG
